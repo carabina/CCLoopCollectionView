@@ -2,7 +2,9 @@
 Loop UICollectionView(include UIPageControl) for swift.
 
 一、纯代码：
+
 //根据frame创建view
+
 let v = CCLoopCollectionView(frame: CGRect(x: 30, y: 60, width: 175, height: 100)) 
 //给轮播图赋值内容（可以为UIImage或UIString）
 v.contentAry = tempAry as [AnyObject]
