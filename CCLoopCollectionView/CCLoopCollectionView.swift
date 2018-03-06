@@ -19,7 +19,7 @@ public class CCLoopCollectionView: UIView, UICollectionViewDataSource, UICollect
     private var scrollTimer: Timer!
     
     /// 内容数组，可以是图片、本地路径或者网络路径
-    var contentAry = [AnyObject]() {
+    public var contentAry = [AnyObject]() {
         didSet {
             if contentAry.count > 1 {
                 contentAry.insert(contentAry.last!, at: 0)
@@ -35,7 +35,7 @@ public class CCLoopCollectionView: UIView, UICollectionViewDataSource, UICollect
         }
     }
     /// 是否开始自动循环
-    var enableAutoScroll = false {
+    public var enableAutoScroll = false {
         didSet {
             if  mCollectionView != nil && enableAutoScroll == true {
                 configAutoScroll()
@@ -43,7 +43,7 @@ public class CCLoopCollectionView: UIView, UICollectionViewDataSource, UICollect
         }
     }
     /// 循环间隔时间
-    var timeInterval = 1.0 {
+    public var timeInterval = 1.0 {
         didSet {
             if mCollectionView != nil && enableAutoScroll == true {
                 configAutoScroll()
@@ -54,14 +54,14 @@ public class CCLoopCollectionView: UIView, UICollectionViewDataSource, UICollect
     let AD_WIDTH: CGFloat = 375.0
     /// 图片的高度
     let AD_HEIGHT: CGFloat = 160.0
-    var currentPageControlColor: UIColor? {
+    public var currentPageControlColor: UIColor? {
         didSet {
             if mCollectionView != nil {
                 loopPageControl.currentPageIndicatorTintColor = currentPageControlColor
             }
         }
     }
-    var pageControlTintColor: UIColor? {
+    public var pageControlTintColor: UIColor? {
         didSet {
             if mCollectionView != nil {
                 loopPageControl.pageIndicatorTintColor = pageControlTintColor
