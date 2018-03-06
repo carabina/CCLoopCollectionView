@@ -36,7 +36,7 @@ class ViewController: UIViewController {
         adView.currentPageControlColor = UIColor.red
         adView.pageControlTintColor = UIColor.black
         
-        let v = CCLoopCollectionView(frame: CGRect(x: 0, y: 60, width: 175, height: 100))
+        let v = CCLoopCollectionView(frame: CGRect(x: 30, y: 60, width: 175, height: 100))
         v.contentAry = tempAry as [AnyObject]
         v.enableAutoScroll = true
         v.timeInterval = 2.0
