@@ -18,7 +18,10 @@ v.pageControlTintColor = UIColor.cyan   //UIPageControl其它颜色
 view.addSubview(v)   //添加到父视图
 
 
+
+
 二、storyboard：
+
 1.拖拽一个UIView到VC上，将其class改为CCLoopCollectionView，并赋值IBOutlet。
 
 2.在对应的swift文件中添加如下代码：
