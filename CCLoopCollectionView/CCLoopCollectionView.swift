@@ -9,7 +9,7 @@
 import UIKit
 import SDWebImage
 
-class CCLoopCollectionView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+public class CCLoopCollectionView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     private var mCollectionView: UICollectionView!
     private var loopPageControl: UIPageControl!
@@ -83,11 +83,11 @@ class CCLoopCollectionView: UIView, UICollectionViewDataSource, UICollectionView
         currentFrame = frame
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    override func didMoveToSuperview() {
+    override public func didMoveToSuperview() {
         if currentFrame == nil {
             currentFrame = frame
         }
@@ -130,23 +130,23 @@ class CCLoopCollectionView: UIView, UICollectionViewDataSource, UICollectionView
     
     //MARK: -  UICollectionView
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
+    public func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return contentAry.count
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 //        return CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.width * AD_HEIGHT / AD_WIDTH)
         return CGSize(width: currentFrame.size.width, height: currentFrame.size.height)
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LoopCollectionViewCellIdentifier", for: indexPath) as? LoopCollectionViewCell
         if cell == nil {
             cell = LoopCollectionViewCell()
@@ -165,7 +165,7 @@ class CCLoopCollectionView: UIView, UICollectionViewDataSource, UICollectionView
         
         return cell!
     }
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
     }
     
@@ -173,7 +173,7 @@ class CCLoopCollectionView: UIView, UICollectionViewDataSource, UICollectionView
     
     //MARK: -  UIScrollViewDelegate
     
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         scrollView.isUserInteractionEnabled = true
         
         let index = Int(scrollView.contentOffset.x / currentFrame.size.width)
@@ -192,7 +192,7 @@ class CCLoopCollectionView: UIView, UICollectionViewDataSource, UICollectionView
         //更新loopPageControl
         loopPageControl?.currentPage = currentIndex-1
     }
-    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+    public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         scrollView.isUserInteractionEnabled = true
         
         let index = Int(scrollView.contentOffset.x / currentFrame.size.width)
@@ -210,10 +210,10 @@ class CCLoopCollectionView: UIView, UICollectionViewDataSource, UICollectionView
         //更新loopPageControl
         loopPageControl?.currentPage = currentIndex-1
     }
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         scrollView.isUserInteractionEnabled = false
     }
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
     }
     
     
@@ -237,5 +237,20 @@ class CCLoopCollectionView: UIView, UICollectionViewDataSource, UICollectionView
             }
             mCollectionView.scrollToItem(at: IndexPath(item: currentIndex, section: 0), at: .centeredHorizontally, animated: true)
         }
+    }
+}
+
+class LoopCollectionViewCell: UICollectionViewCell {
+    var contentImageView: UIImageView?
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        contentImageView = UIImageView(frame: CGRect(x: 0, y: frame.origin.y, width: frame.size.width, height: frame.size.height))
+        self.addSubview(contentImageView!)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
