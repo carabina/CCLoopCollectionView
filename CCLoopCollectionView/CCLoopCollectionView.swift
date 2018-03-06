@@ -77,7 +77,7 @@ public class CCLoopCollectionView: UIView, UICollectionViewDataSource, UICollect
     }
     */
     
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         
         currentFrame = frame
